@@ -26,6 +26,7 @@ app.use((req, res, next) => {
   console.log('**********************')
   next()
 })
+
 app.use(express.urlencoded({ extended: true })) // Without this half my code wont work because i need req.body
 const methodOverride = require('method-override');
 app.use(methodOverride('_method'));
@@ -45,7 +46,6 @@ app.get('/logs/', (req, res) => {
       })
     }
   })
-
 })
 
 /*
@@ -66,6 +66,28 @@ app.delete('/ logs/:id', (req, res) => {
       })
     } else {
       res.redirect('/logs')
+    }
+  })
+})
+
+/*
+Put/Update
+*/
+app.put('/logs/:id', (req, res) => {
+  if(req.body.shipIsBroken === 'on'){
+    req.body.shipIsBroken = true;
+  } else {
+    req.body.shipIsBroken = false;
+  }
+  Log.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedLog)=>{
+    if(err){
+      res.status(404).send({
+          msg: err.message
+      })
+    } else {
+      res.render('Show', {
+        log: updatedLog
+      })
     }
   })
 })
@@ -122,28 +144,6 @@ app.get('/logs/:id', (req, res) => {
     } else {
       res.render('Show', {
         log: foundLog
-      })
-    }
-  })
-})
-
-/*
-Put/Update
-*/
-app.put('/logs/:id', (req, res) => {
-  if(req.body.readyToEat === 'on'){
-    req.body.readyToEat = true;
-  } else {
-    req.body.readyToEat = false;
-  }
-  Log.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedLog)=>{
-    if(err){
-      res.status(404).send({
-          msg: err.message
-      })
-    } else {
-      res.redirect('Index', {
-        log: updatedLog
       })
     }
   })
