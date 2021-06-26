@@ -58,7 +58,7 @@ app.get('/logs/new', (req, res) => {
 /*
 Delete
 */
-app.delete('/ logs/:id', (req, res) => {
+app.delete('/logs/:id', (req, res) => {
   Log.findByIdAndDelete(req.params.id, (err, foundLog)=>{
     if(err){
       res.status(404).send({
