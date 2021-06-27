@@ -87,6 +87,7 @@ app.put('/logs/:id', (req, res) => {
     } else {
       res.render('Show', {
         log: updatedLog
+
       })
     }
   })
