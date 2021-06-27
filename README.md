@@ -3,7 +3,7 @@
 
 Action	|　URL	|　HTTP Verb	|　JSX view filename	|　　mongoose method|　
 ----|----|----|----|----|----|
-1	Index	|　　/logs/　|　 GET | Index.jsx	|Log.find()
+1	Index	| /logs/ | GET | Index.jsx | Log.find()
 2	Show | /logs/:id | GET | Show.jsx | Log.findById()
 3	New	| /logs/new | GET | New.jsx | none
 4	Create | /logs/	| POST | none| Log.create(req.body)
