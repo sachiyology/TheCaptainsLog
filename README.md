@@ -1,5 +1,7 @@
 # TheCaptainsLog
 
+https://thecaptainslog-app-sachiyo.herokuapp.com/logs
+
 
 Action	|　URL	|　HTTP Verb	|　JSX view filename	|　　mongoose method|　
 ----|----|----|----|----|----|
